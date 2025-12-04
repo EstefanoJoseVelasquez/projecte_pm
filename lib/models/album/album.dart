@@ -1,0 +1,59 @@
+class Album {
+  final String _id;
+  String _name;
+  final String _artistId;
+  List<String> _colaboratorsId;
+  String _coverURL;
+  List<String> _genre;
+  String _type;
+  bool _isPublic;
+  String _label;
+  DateTime _createdAt;
+
+  //Constructor
+  Album({
+    required String id,
+    required String name,
+    required String artistId,
+    List<String>? colaboratorsId,
+    String? coverURL,
+    List<String>? genre,
+    String? type,
+    bool? isPublic,
+    String? label,
+  }) : _id = id,
+       _name = name,
+       _artistId = artistId,
+       _colaboratorsId = colaboratorsId ?? [],
+       _coverURL = coverURL ?? '',
+       _genre = genre ?? [],
+       _type = type ?? 'album',
+       _isPublic = isPublic ?? false,
+       _label = label ?? '',
+       _createdAt = DateTime.now();
+
+  //Llista de getters
+  String get id => _id;
+  String get name => _name;
+  String get artistId => _artistId;
+  String get coverURL => _coverURL;
+  String get type => _type;
+  bool get isPublic => _isPublic;
+  String get label => _label;
+  DateTime get createdAt => _createdAt;
+
+  //Llista de Setters
+  set name(String name) => _name = name;
+  set coverURL(String coverURL) => _coverURL = coverURL;
+  set type(String type) => _type = type;
+  set isPublic(bool isPublic) => _isPublic = isPublic;
+  set label(String label) => _label = label;
+
+  //Metode per colaboratorsId
+  void addColaboratorsId(String id) => _colaboratorsId.add(id);
+  void removeColaboratorsId(String id) => _colaboratorsId.remove(id);
+
+  //Metode per genre
+  void addGenre(String genre) => _genre.add(genre);
+  void removeGenre(String genre) => _genre.remove(genre);
+}

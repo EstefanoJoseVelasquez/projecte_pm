@@ -1,10 +1,10 @@
-class Following {
+class UserFollowing {
   final String _id; //No modificable
   final String _userId;
   final DateTime _followedAt; //No modificable
 
   //Constructor
-  Following({required String id, required String userId})
+  UserFollowing({required String id, required String userId})
     : _id = id,
       _userId = userId,
       _followedAt = DateTime.now();

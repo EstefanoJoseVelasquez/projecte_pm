@@ -64,5 +64,5 @@ class User {
 
   //Metodes per socialLink
   void addSocialLink(String platform, String url) => socialLink[platform] = url;
-  void deleteSocialLink(String platform) => socialLink.remove(platform);
+  void removeSocialLink(String platform) => socialLink.remove(platform);
 }
