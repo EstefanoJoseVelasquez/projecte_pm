@@ -2,7 +2,7 @@ class Album {
   final String _id;
   String _name;
   final String _artistId;
-  List<String> _colaboratorsId;
+  List<String> _collaboratorId;
   String _coverURL;
   List<String> _genre;
   String _type;
@@ -15,7 +15,7 @@ class Album {
     required String id,
     required String name,
     required String artistId,
-    List<String>? colaboratorsId,
+    List<String>? collaboratorId,
     String? coverURL,
     List<String>? genre,
     String? type,
@@ -24,7 +24,7 @@ class Album {
   }) : _id = id,
        _name = name,
        _artistId = artistId,
-       _colaboratorsId = colaboratorsId ?? [],
+       _collaboratorId = collaboratorId ?? [],
        _coverURL = coverURL ?? '',
        _genre = genre ?? [],
        _type = type ?? 'album',
@@ -50,8 +50,8 @@ class Album {
   set label(String label) => _label = label;
 
   //Metode per colaboratorsId
-  void addColaboratorsId(String id) => _colaboratorsId.add(id);
-  void removeColaboratorsId(String id) => _colaboratorsId.remove(id);
+  void addCollaboratorId(String id) => _collaboratorId.add(id);
+  void removeCollaboratorId(String id) => _collaboratorId.remove(id);
 
   //Metode per genre
   void addGenre(String genre) => _genre.add(genre);

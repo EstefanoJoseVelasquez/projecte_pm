@@ -31,6 +31,7 @@ class Playlist {
   //Llista de getters
   String get id => _id;
   String get name => _name;
+  String get description => _description;
   String get ownerId => _ownerId;
   String get coverURL => _coverURL;
   bool get isPublic => _isPublic;
@@ -40,6 +41,7 @@ class Playlist {
 
   //Llista de Setters
   set name(String name) => _name = name;
+  set description(String description) => _description = description;
   set coverURL(String coverURL) => _coverURL = coverURL;
   set isPublic(bool isPublic) => _isPublic = isPublic;
   set isCollaborative(bool isCollabo) => _isCollaborative = isCollabo;

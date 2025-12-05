@@ -2,10 +2,11 @@ class User {
   //Atributs clase User
   final String _id;
   String _name;
+  String _bio;
   final String _email;
   String _photoURL;
   String _coverURL;
-  String _bio;
+  bool _verified;
   String _label;
   String _manager;
   List<String> _genre;
@@ -20,6 +21,7 @@ class User {
     String? photoURL,
     String? coverURL,
     String? bio,
+    bool? verified,
     String? label,
     String? manager,
     List<String>? genre,
@@ -31,6 +33,7 @@ class User {
        _photoURL = photoURL ?? '',
        _coverURL = coverURL ?? '',
        _bio = bio ?? '',
+       _verified = verified ?? false,
        _label = label ?? '',
        _manager = manager ?? '',
        _genre = genre ?? [],
@@ -44,6 +47,7 @@ class User {
   String get photoURL => _photoURL;
   String get coverURL => _coverURL;
   String get bio => _bio;
+  bool get verified => _verified;
   String get label => _label;
   String get manager => _manager;
   List<String> get genre => _genre;
@@ -55,6 +59,7 @@ class User {
   set photoURL(String photoURL) => _photoURL = photoURL;
   set coverURL(String coverURL) => _coverURL = coverURL;
   set bio(String bio) => _bio = bio;
+  set verified(bool verified) => _verified = verified;
   set label(String label) => _label = label;
   set manager(String manager) => _manager = manager;
 
