@@ -1,4 +1,6 @@
-class User {
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class Artist {
   //Atributs clase User
   final String _id;
   String _name;
@@ -14,7 +16,7 @@ class User {
   final DateTime _createdAt;
 
   //Constructor
-  User({
+  Artist({
     required String id,
     required String name,
     required String email,
@@ -70,4 +72,27 @@ class User {
   //Metodes per socialLink
   void addSocialLink(String platform, String url) => socialLink[platform] = url;
   void removeSocialLink(String platform) => socialLink.remove(platform);
+  
+  factory Artist.fromFirestore(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+
+    // Converteix Timestamp a DateTime
+    final createdAtTimestamp = data['createdAt'] as Timestamp?;
+    final createdAt = createdAtTimestamp?.toDate();
+
+    return Artist(
+      id: doc.id, // L'ID del document és l'UID
+      name: data['name'] ?? 'Artista sense nom',
+      email: data['email'] ?? '',
+      photoURL: data['photoURL'],
+      coverURL: data['coverURL'],
+      bio: data['bio'],
+      verified: data['verified'] ?? false,
+      label: data['label'],
+      manager: data['manager'],
+      genre: List<String>.from(data['genre'] ?? []),
+      socialLink: Map<String, String>.from(data['socialLink'] ?? {}),
+      createdAt: createdAt,
+    );
+  }
 }

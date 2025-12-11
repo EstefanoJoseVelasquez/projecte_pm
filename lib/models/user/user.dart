@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class User {
   final String _id;
   String _name;
@@ -13,6 +15,7 @@ class User {
     required String email,
     String? photoURL,
     String? bio,
+    DateTime? createdAt,
   }) : _id = id,
        _name = name,
        _email = email,
@@ -32,4 +35,21 @@ class User {
   set name(String name) => _name = name;
   set photoURL(String photoURL) => _photoURL = photoURL;
   set bio(String bio) => _bio = bio;
+
+  factory User.fromFirestore(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+    
+    // Converteix Timestamp a DateTime
+    final createdAtTimestamp = data['createdAt'] as Timestamp?;
+    final createdAt = createdAtTimestamp?.toDate();
+
+    return User(
+      id: doc.id,
+      name: data['name'] ?? '',
+      email: data['email'] ?? '',
+      photoURL: data['photoURL'],
+      bio: data['bio'],
+      createdAt: createdAt,
+    );
+  }
 }
